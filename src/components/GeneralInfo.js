@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { FiCheckCircle } from "react-icons/fi";
-import { FiEdit3 } from "react-icons/fi";
-import { FiTrash2 } from "react-icons/fi";
+
 
 export default class GeneralInfo extends Component {
     render() {
@@ -21,14 +19,6 @@ export default class GeneralInfo extends Component {
                 <input type="url" />
                 <label htmlFor="github">Github: </label>
                 <input type="url" />
-                <br />
-                <button type="button">Delete Entry <FiTrash2 /></button>
-                <button type="button">
-                    Edit Entry <FiEdit3 />
-                </button>
-                <button type="submit">
-                    Submit Entry <FiCheckCircle />
-                </button>
             </div>
         )
     }
