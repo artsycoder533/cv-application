@@ -13,6 +13,7 @@ export default class GeneralInfo extends Component {
             portfolio: "",
             linkedIn: "",
             github: "",
+            id: uniqid()
         };
         props.populateGeneral();
     }
@@ -46,10 +47,9 @@ export default class GeneralInfo extends Component {
     }
 
     edit = () => {
-        //get form data from state
-        //update state to these values
-        this.setState(Object.assign(this.props.general, this.state));
         //update form input values with state values
+        this.setState(Object.assign(this.props.general, this.state));
+        
     }
 
 	render() {

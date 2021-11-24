@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EducationInfo from './EducationInfo';
+import SectionButtons from './SectionButtons';
 
 
-export default class Education extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    render() {
-        return (
-            <div className="education">
-                <h2>Education</h2>
-                <EducationInfo />
-                <br/>
-            </div>
-        )
-    }
+export default function General(props) {
+    return (
+        <div className="education">
+            <h2>Education</h2>
+            <EducationInfo props={props} />
+            <SectionButtons />
+            <br />
+        </div>
+    );
+    
 }
 

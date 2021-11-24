@@ -19,16 +19,7 @@ class App extends Component {
 
 		this.state = {
 			general: {},
-			education: [
-				// {
-				// 	school: "",
-				// 	major: "",
-				// 	startDate: "",
-				// 	endDate: "",
-				// 	attending: "no",
-				// 	degree: "",
-				// },
-			],
+			education: [],
 			experience: [
 				// {
 				// 	title: "",
@@ -53,13 +44,13 @@ class App extends Component {
 		this.setState(Object.assign(this.state.general, data));
 	};
 	populateEducation = () => {
-		return this.education;
+		return this.state.education;
 	};
 	populateExperience = () => {
-		return this.experience;
+		return this.state.experience;
 	};
 	populateSkills = () => {
-		return this.skills;
+		return this.state.skills;
 	};
 
     render() {
@@ -68,7 +59,7 @@ class App extends Component {
 				<article className="cv">
 					<h1>CV Application</h1>
 					<General populateGeneral={this.populateGeneral} general={this.state.general}/>
-					<Education />
+					<Education populateEducation={this.populateEducation} education={this.state.education}/>
 					<br />
 					<Experience />
 					<br />

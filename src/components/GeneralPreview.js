@@ -2,9 +2,7 @@ import React from 'react';
 
 
 export default function GeneralPreview(props) {
-    console.log(props);
     const { name, email, phone, portfolio, linkedIn, github } = props.general;
-    console.log(name, email, phone, portfolio, linkedIn, github);
 
     return (
         <div>
