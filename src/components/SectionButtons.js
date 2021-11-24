@@ -3,6 +3,11 @@ import { FiCheckCircle } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
 export default class SectionButtons extends Component {
+    //return another form section
+    addAnotherFormSection = () => {
+        
+    }
+
     render() {
         return (
             <div className="section__buttons">
