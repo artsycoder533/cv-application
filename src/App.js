@@ -45,7 +45,7 @@ class App extends Component {
       //   educationList: [],
       //   experiencesList: [],
       //   skillsList: [],
-      view: 2,
+      view: 0,
     };
   }
 
