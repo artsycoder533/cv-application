@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/artsycoder533/cv-application.git/static/css/main.a9d1797e.chunk.css",
+    "main.js": "/artsycoder533/cv-application.git/static/js/main.406d5a20.chunk.js",
+    "main.js.map": "/artsycoder533/cv-application.git/static/js/main.406d5a20.chunk.js.map",
+    "runtime-main.js": "/artsycoder533/cv-application.git/static/js/runtime-main.f31a1468.js",
+    "runtime-main.js.map": "/artsycoder533/cv-application.git/static/js/runtime-main.f31a1468.js.map",
+    "static/js/2.b6bb27e9.chunk.js": "/artsycoder533/cv-application.git/static/js/2.b6bb27e9.chunk.js",
+    "static/js/2.b6bb27e9.chunk.js.map": "/artsycoder533/cv-application.git/static/js/2.b6bb27e9.chunk.js.map",
+    "index.html": "/artsycoder533/cv-application.git/index.html",
+    "static/css/main.a9d1797e.chunk.css.map": "/artsycoder533/cv-application.git/static/css/main.a9d1797e.chunk.css.map",
+    "static/js/2.b6bb27e9.chunk.js.LICENSE.txt": "/artsycoder533/cv-application.git/static/js/2.b6bb27e9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f31a1468.js",
+    "static/js/2.b6bb27e9.chunk.js",
+    "static/css/main.a9d1797e.chunk.css",
+    "static/js/main.406d5a20.chunk.js"
+  ]
+}
