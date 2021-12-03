@@ -11,17 +11,16 @@ import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 export default class EducationInfoForm extends Component {
   constructor(props) {
     super(props);
-      console.log(props.education.graduate);
+     
     this.state = {
       education: this.props.education,
       degreeLevel: ["Bachelors", "Masters", "Certificate", "Doctorate"],
         view: this.props.view,
-        graduate: ""
+        //graduate: ""
     };
   }
 
   handleInput = (e, index) => {
-    console.log(e.currentTarget.name, index);
     const { currentTarget: input } = e;
     const copyOfState = { ...this.state };
     const { education } = copyOfState;
@@ -38,24 +37,24 @@ export default class EducationInfoForm extends Component {
     this.setState(copyOfState);
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.populateEducation(this.state.entry);
-    this.resetForm();
-  };
+//   handleSubmit = (e) => {
+//     e.preventDefault();
+//     this.props.populateEducation(this.state.entry);
+//     this.resetForm();
+//   };
 
-  resetForm = () => {
-    const reset = {
-      school: "",
-      major: "",
-      startDate: "",
-      endDate: "",
-      attending: false,
-      degree: "",
-      id: uniqid(),
-    };
-    this.setState(Object.assign(reset, this.state.education[0]));
-  };
+//   resetForm = () => {
+//     const reset = {
+//       school: "",
+//       major: "",
+//       startDate: "",
+//       endDate: "",
+//       attending: false,
+//       degree: "",
+//       id: uniqid(),
+//     };
+//     this.setState(Object.assign(reset, this.state.education[0]));
+//   };
 
 //   save = () => {
 //     console.log(this.state.entry);
@@ -119,7 +118,7 @@ export default class EducationInfoForm extends Component {
             } = entry;
 
             return (
-              <React.Fragment key={index}>
+              <React.Fragment key={id}>
                 <DisplayInput
                   label="School"
                   name="school"

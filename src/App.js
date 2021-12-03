@@ -37,14 +37,15 @@ class App extends Component {
           company: "",
           startDate: "",
           endDate: "",
-          employed: "no",
+          employed: "",
           duties: "",
+          id: uniqid(),
         },
       ],
-      educationList: [],
-      experiencesList: [],
-      skillsList: [],
-      view: 0,
+      //   educationList: [],
+      //   experiencesList: [],
+      //   skillsList: [],
+      view: 2,
     };
   }
 
@@ -63,19 +64,18 @@ class App extends Component {
 
   nextView = (e) => {
     e.preventDefault();
-    const copyOfState = {...this.state};
+    const copyOfState = { ...this.state };
     copyOfState.view++;
     this.setState(copyOfState);
   };
 
   prevView = (e) => {
-	  e.preventDefault();
-	  console.log("prev")
-    const copyOfState = {...this.state};
+    e.preventDefault();
+    console.log("prev");
+    const copyOfState = { ...this.state };
     copyOfState.view--;
     this.setState(copyOfState);
   };
-
 
   //reset = () => {};
 
@@ -99,11 +99,17 @@ class App extends Component {
                 prevView={this.prevView}
               />
             </div>
-					) : view === 2 ? (
-							<div>
-            <ExperienceInfoForm/>
-			</div>
-          ) : ""}
+          ) : view === 2 ? (
+            <div>
+              <ExperienceInfoForm
+                nextView={this.nextView}
+                prevView={this.prevView}
+                experience={this.state.experience}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </article>
       </section>
     );
