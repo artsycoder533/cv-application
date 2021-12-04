@@ -63,7 +63,7 @@ export default class ExperienceInfoForm extends Component {
     // const { title, company, startDate, endDate, employed, duties, id } = experience;
     return (
       <div className="experience__info">
-        <h2>General Info</h2>
+        <h2>Experience</h2>
         <form action="">
           {experience.map((entry, index) => {
             const { title, company, startDate, endDate, employed, duties, id } =
@@ -134,7 +134,8 @@ export default class ExperienceInfoForm extends Component {
                 <DisplayTextarea
                   type={"textarea"}
                   label={"Duties"}
-                  name={duties}
+                  value={duties}
+                  name="duties"
                   cols={30}
                   rows={10}
                   index={index}
@@ -159,7 +160,7 @@ export default class ExperienceInfoForm extends Component {
         <br />
         <br />
         <button onClick={prevView}>
-          Prev <FiArrowLeft />
+          <FiArrowLeft /> Go Back
         </button>
         <button onClick={nextView}>
           Next <FiArrowRight />

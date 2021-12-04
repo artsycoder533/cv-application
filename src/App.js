@@ -5,6 +5,8 @@ import uniqid from "uniqid";
 import GeneralInfoForm from "./components/GeneralInfoForm";
 import EducationInfoForm from "./components/EducationInfoForm";
 import ExperienceInfoForm from "./components/ExperienceInfoForm";
+import SkillsInfoForm from "./components/SkillsInfoForm";
+import CV from "./components/CV";
 
 class App extends Component {
   constructor(props) {
@@ -42,6 +44,7 @@ class App extends Component {
           id: uniqid(),
         },
       ],
+      skills: [""],
       //   educationList: [],
       //   experiencesList: [],
       //   skillsList: [],
@@ -49,18 +52,22 @@ class App extends Component {
     };
   }
 
-  generateCV = () => {};
-
-  addGeneralInfo = (generalInfo) => {
-    const copyOfState = this.state;
-    const { general } = copyOfState;
-    Object.assign(general, generalInfo);
+  generateCV = () => {
+    const copyOfState = { ...this.state };
+    copyOfState.view++;
     this.setState(copyOfState);
   };
 
-  addEducation = () => {};
-  addExperience = () => {};
-  addSkills = () => {};
+  // addGeneralInfo = (generalInfo) => {
+  //   const copyOfState = this.state;
+  //   const { general } = copyOfState;
+  //   Object.assign(general, generalInfo);
+  //   this.setState(copyOfState);
+  // };
+
+  // addEducation = () => {};
+  // addExperience = () => {};
+  // addSkills = () => {};
 
   nextView = (e) => {
     e.preventDefault();
@@ -80,11 +87,11 @@ class App extends Component {
   //reset = () => {};
 
   render() {
-    const { view, id } = this.state;
+    const { view } = this.state;
     return (
       <section className="App">
         <article className="cv">
-          <h1>CV Application</h1>
+          {/* <h1>CV Application</h1> */}
           {view === 0 ? (
             <GeneralInfoForm
               general={this.state.general}
@@ -107,9 +114,20 @@ class App extends Component {
                 experience={this.state.experience}
               />
             </div>
-          ) : (
-            ""
-          )}
+          ) : view === 3 ?(
+                  <div>
+                    <SkillsInfoForm skills={this.state.skills} prevView={this.prevView} />
+                    <br/>
+                    <button type="button" onClick={()=>this.generateCV()}>Generate CV</button>
+              </div>
+                ) : <div className="cv">
+                    <CV
+                      general={this.state.general}
+                      education={this.state.education}
+                      experience={this.state.experience}
+                      skills={this.state.skills}
+                    />
+          </div> }
         </article>
       </section>
     );

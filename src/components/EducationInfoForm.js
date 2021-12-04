@@ -204,7 +204,7 @@ export default class EducationInfoForm extends Component {
         <br />
         <br />
         <button onClick={prevView}>
-          Prev <FiArrowLeft />
+          <FiArrowLeft /> Go Back
         </button>
         <button onClick={nextView}>
           Next <FiArrowRight />
