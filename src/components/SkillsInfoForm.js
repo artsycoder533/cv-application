@@ -11,34 +11,33 @@ export default class SkillsInfoForm extends Component {
     this.state = {
       skills: this.props.skills,
     };
-    }
-    handleInput = (e, index) => {
-        e.preventDefault();
-        const copyOfState = { ...this.state };
-        const { skills } = copyOfState;
-        const { currentTarget: input } = e;
-        skills[index] = input.value;
-        this.setState(copyOfState);
-    }
+  }
+  handleInput = (e, index) => {
+    e.preventDefault();
+    const copyOfState = { ...this.state };
+    const { skills } = copyOfState;
+    const { currentTarget: input } = e;
+    skills[index] = input.value;
+    this.setState(copyOfState);
+  };
 
   delete = (index) => {
     const copyOfState = { ...this.state };
-      const { skills } = copyOfState;
-      skills.splice(index, 1);
-      this.setState(copyOfState);
+    const { skills } = copyOfState;
+    skills.splice(index, 1);
+    this.setState(copyOfState);
   };
 
-    addNewEntry = () => {
-        let copyOfState = { ...this.state };
-        const { skills } = this.state;
-        skills.push("");
-       
+  addNewEntry = () => {
+    let copyOfState = { ...this.state };
+    const { skills } = this.state;
+    skills.push("");
 
-        this.setState(copyOfState);
+    this.setState(copyOfState);
   };
   render() {
-      const { skills, prevView } = this.props;
-      
+    const { skills, prevView } = this.props;
+
     return (
       <div className="skills__info">
         <h2>Skills</h2>

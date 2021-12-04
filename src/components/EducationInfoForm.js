@@ -11,13 +11,13 @@ import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 export default class EducationInfoForm extends Component {
   constructor(props) {
     super(props);
-     
+
     this.state = {
       education: this.props.education,
       degreeOptions: ["Bachelors", "Masters", "Certificate", "Doctorate"],
       designationOptions: ["Science", "Arts"],
-        view: this.props.view,
-        //graduate: ""
+      view: this.props.view,
+      //graduate: ""
     };
   }
 
@@ -30,51 +30,13 @@ export default class EducationInfoForm extends Component {
     //if input type is a checkbox
     input.type === "checkbox"
       ? (entry[input.name] = input.checked)
-          : (entry[input.name] = input.value);
-      //if input type is radio
-      if (input.type === "radio") {
-          entry.graduate = input.value;
-      }
+      : (entry[input.name] = input.value);
+    //if input type is radio
+    if (input.type === "radio") {
+      entry.graduate = input.value;
+    }
     this.setState(copyOfState);
   };
-
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     this.props.populateEducation(this.state.entry);
-//     this.resetForm();
-//   };
-
-//   resetForm = () => {
-//     const reset = {
-//       school: "",
-//       major: "",
-//       startDate: "",
-//       endDate: "",
-//       attending: false,
-//       degree: "",
-//       id: uniqid(),
-//     };
-//     this.setState(Object.assign(reset, this.state.education[0]));
-//   };
-
-//   save = () => {
-//     console.log(this.state.entry);
-//     this.setState({
-//       education: [this.state.entry, ...this.state.education],
-//     });
-//     this.resetForm();
-//     console.log(this.state.education);
-//     //add new array to the end of the array, reset first element of array
-//   };
-
-//   edit = (id) => {
-//     //get the education array, go find the
-//     const educationCopy = [...this.props.education];
-//     educationCopy.find((entry) => {
-//       return entry.id === this.state.education[0].id;
-//     });
-//     this.setState(Object.assign(this.props));
-//   };
 
   delete = (index) => {
     const copyOfState = { ...this.state };
@@ -93,7 +55,7 @@ export default class EducationInfoForm extends Component {
       endDate: "",
       attending: "",
       graduate: "",
-        designation: "",
+      designation: "",
       degree: "",
       id: uniqid(),
     });
@@ -103,7 +65,7 @@ export default class EducationInfoForm extends Component {
   render() {
     const { nextView, prevView, education } = this.props;
     const { degreeOptions, designationOptions } = this.state;
-    
+
     return (
       <div className="education__info">
         <h2>Education Info</h2>
@@ -195,28 +157,33 @@ export default class EducationInfoForm extends Component {
                       id={id}
                     />
                     <br />
-                      <br />
-                      {graduate === "yes" ? <React.Fragment><DisplaySelect
-                      label={"Degree"}
-                      value={degree}
-                      name={"degree"}
-                      handleInput={this.handleInput}
-                      options={degreeOptions}
-                      index={index}
-                      id={id}
-                    />
                     <br />
-                    <DisplaySelect
-                      label={"Designation"}
-                      value={designation}
-                      name={"designation"}
-                      handleInput={this.handleInput}
-                      options={designationOptions}
-                      index={index}
-                      id={id}
-                    />
-                    <br /></React.Fragment> : ""}
-                    
+                    {graduate === "yes" ? (
+                      <React.Fragment>
+                        <DisplaySelect
+                          label={"Degree"}
+                          value={degree}
+                          name={"degree"}
+                          handleInput={this.handleInput}
+                          options={degreeOptions}
+                          index={index}
+                          id={id}
+                        />
+                        <br />
+                        <DisplaySelect
+                          label={"Designation"}
+                          value={designation}
+                          name={"designation"}
+                          handleInput={this.handleInput}
+                          options={designationOptions}
+                          index={index}
+                          id={id}
+                        />
+                        <br />
+                      </React.Fragment>
+                    ) : (
+                      ""
+                    )}
                   </React.Fragment>
                 )}
 
@@ -238,12 +205,11 @@ export default class EducationInfoForm extends Component {
         <br />
         <button onClick={prevView}>
           <FiArrowLeft /> Go Back
-        </button>   <button onClick={nextView}>
+        </button>{" "}
+        <button onClick={nextView}>
           Next <FiArrowRight />
         </button>
       </div>
     );
   }
 }
-
-

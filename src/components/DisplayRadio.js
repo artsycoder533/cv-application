@@ -1,22 +1,20 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class DisplayRadio extends Component {
-      
-     state = {
-        values: ["yes", "no"],
-        graduate: this.props.graduate,
-      };
- 
-  
+  state = {
+    values: ["yes", "no"],
+    graduate: this.props.graduate,
+  };
+
   render() {
     const { name, handleInput, comp, index, graduate, id } = this.props;
-   
+
     return (
       <React.Fragment>
         {this.state.values.map((val) => {
           console.log(name, val);
           return (
-            <React.Fragment >
+            <React.Fragment>
               <input
                 type="radio"
                 name={name}
@@ -32,6 +30,5 @@ export default class DisplayRadio extends Component {
     );
   }
 }
-
 
 //

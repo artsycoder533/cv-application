@@ -9,30 +9,20 @@ class GeneralInfoForm extends Component {
 
     //equal to this props.general
     this.state = {
-		general: this.props.general,
-		id: uniqid()
+      general: this.props.general,
+      id: uniqid(),
     };
   }
 
-	handleInput = (e) => {
-		e.preventDefault();
-	  const { currentTarget: input } = e;
-	  console.log(input.value);
+  handleInput = (e) => {
+    e.preventDefault();
+    const { currentTarget: input } = e;
+    console.log(input.value);
     const copyOfState = { ...this.state };
     const { general } = copyOfState;
     general[input.name] = input.value;
     this.setState(copyOfState);
   };
-
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     //form validation
-//     //if no errors pass state object to app
-//     //pass state to populateGeneral method
-//     this.props.populateGeneral(this.state);
-//     //reset form
-//     this.resetForm();
-//   };
 
   resetForm = () => {
     const reset = {
@@ -55,7 +45,7 @@ class GeneralInfoForm extends Component {
   //label, name, value
   displayInput = (label, name, value, type) => {
     return (
-		<React.Fragment key={uniqid()}>
+      <React.Fragment key={uniqid()}>
         <label htmlFor="name">{label}</label>
         <br />
         <input
@@ -73,9 +63,9 @@ class GeneralInfoForm extends Component {
 
   render() {
     const { name, email, phone, portfolio, github, linkedIn } =
-		  this.props.general;
-	  const { nextView } = this.props;
-	  const { general } = this.state;
+      this.props.general;
+    const { nextView } = this.props;
+    const { general } = this.state;
 
     return (
       <div className="general__info">

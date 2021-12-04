@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import uniqid from "uniqid";
-// import ResumeForm from "./components/ResumeForm";
 import GeneralInfoForm from "./components/GeneralInfoForm";
 import EducationInfoForm from "./components/EducationInfoForm";
 import ExperienceInfoForm from "./components/ExperienceInfoForm";
@@ -46,9 +45,6 @@ class App extends Component {
         },
       ],
       skills: [""],
-      //   educationList: [],
-      //   experiencesList: [],
-      //   skillsList: [],
       view: 0,
     };
   }
@@ -58,17 +54,6 @@ class App extends Component {
     copyOfState.view++;
     this.setState(copyOfState);
   };
-
-  // addGeneralInfo = (generalInfo) => {
-  //   const copyOfState = this.state;
-  //   const { general } = copyOfState;
-  //   Object.assign(general, generalInfo);
-  //   this.setState(copyOfState);
-  // };
-
-  // addEducation = () => {};
-  // addExperience = () => {};
-  // addSkills = () => {};
 
   nextView = (e) => {
     e.preventDefault();
@@ -84,8 +69,6 @@ class App extends Component {
     copyOfState.view--;
     this.setState(copyOfState);
   };
-
-  //reset = () => {};
 
   render() {
     const { view } = this.state;
@@ -144,4 +127,3 @@ class App extends Component {
 }
 
 export default App;
-
