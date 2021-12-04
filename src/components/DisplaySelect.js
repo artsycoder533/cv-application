@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import uniqid from "uniqid";
 
 export default class DisplaySelect extends Component {
-    state = {
-        options: ["Bachelors", "Masters", "Certificate", "Doctorate"],
-    }
+    
     render() {
-        const { label, value, name, handleInput, index } = this.props;
-        const { options } = this.state;
+        const { label, value, name, handleInput, index, options } = this.props;
+      
         return (
           <div>
             <label>{label}</label>

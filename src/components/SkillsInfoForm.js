@@ -42,29 +42,31 @@ export default class SkillsInfoForm extends Component {
     return (
       <div className="skills__info">
         <h2>Skills</h2>
-            <form>
-                {skills.length <1 ? <h4>No skills added, press "Add Entry to add a skill"</h4> :
-          skills.map((skill, index) => {
-            return (
-              <React.Fragment key={index}>
-              
-                
-                    <DisplayInput
-                      label="Skill:"
-                      name="skill"
-                      value={skill}
-                      handleInput={this.handleInput}
-                      index={index}
-                    />
-                    <button type="button" onClick={()=>this.delete(index)}>
-                      Delete Entry <FiTrash2 />
-                    </button>
-      <br/>
-              
-              </React.Fragment>
-            );
-          })}
-
+        <br />
+        <form>
+          {skills.length < 1 ? (
+            <h4>No skills added, press "Add Entry to add a skill"</h4>
+          ) : (
+            skills.map((skill, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <DisplayInput
+                    label="Skill"
+                    name="skill"
+                    value={skill}
+                    handleInput={this.handleInput}
+                    index={index}
+                  />
+                  <button type="button" onClick={() => this.delete(index)}>
+                    Delete Entry <FiTrash2 />
+                  </button>
+                  <br />
+                  <br />
+                </React.Fragment>
+              );
+            })
+          )}
+          <br />
           <br />
           <button type="button" onClick={() => this.addNewEntry()}>
             Add Entry <FiPlus />

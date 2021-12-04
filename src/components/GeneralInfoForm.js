@@ -78,8 +78,9 @@ class GeneralInfoForm extends Component {
 	  const { general } = this.state;
 
     return (
-		<div className="general__info">
-			<h2>General Info</h2>
+      <div className="general__info">
+        <h2>General Info</h2>
+        <br />
         <form action="" onSubmit={this.handleSubmit}>
           <DisplayInput
             label="Name"
@@ -87,9 +88,11 @@ class GeneralInfoForm extends Component {
             value={name}
             type="text"
             handleInput={this.handleInput}
-					placeholder={name}
-					key={uniqid}
+            placeholder={name}
+            key={uniqid}
           />
+          <br />
+          <br />
           <DisplayInput
             label="Email"
             name="email"
@@ -98,6 +101,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={email}
           />
+          <br />
+          <br />
           <DisplayInput
             label="Phone"
             name="phone"
@@ -106,6 +111,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={phone}
           />
+          <br />
+          <br />
           <DisplayInput
             label="Portfolio"
             name="portfolio"
@@ -114,6 +121,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={portfolio}
           />
+          <br />
+          <br />
           <DisplayInput
             label="LinkedIn"
             name="linkedIn"
@@ -122,6 +131,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={linkedIn}
           />
+          <br />
+          <br />
           <DisplayInput
             label="Github"
             name="github"
@@ -130,7 +141,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={github}
           />
-		<br />
+          <br />
+          <br />
           <button onClick={nextView}>
             Next <FiArrowRight />
           </button>

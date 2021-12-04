@@ -30,6 +30,7 @@ class App extends Component {
           attending: "",
           graduate: "",
           degree: "",
+          designation: "",
           id: uniqid(),
         },
       ],
@@ -90,7 +91,7 @@ class App extends Component {
     const { view } = this.state;
     return (
       <section className="App">
-        <article className="cv">
+        <article className="builder">
           {/* <h1>CV Application</h1> */}
           {view === 0 ? (
             <GeneralInfoForm
@@ -114,20 +115,28 @@ class App extends Component {
                 experience={this.state.experience}
               />
             </div>
-          ) : view === 3 ?(
-                  <div>
-                    <SkillsInfoForm skills={this.state.skills} prevView={this.prevView} />
-                    <br/>
-                    <button type="button" onClick={()=>this.generateCV()}>Generate CV</button>
-              </div>
-                ) : <div className="cv">
-                    <CV
-                      general={this.state.general}
-                      education={this.state.education}
-                      experience={this.state.experience}
-                      skills={this.state.skills}
-                    />
-          </div> }
+          ) : view === 3 ? (
+            <div>
+              <SkillsInfoForm
+                skills={this.state.skills}
+                prevView={this.prevView}
+              />
+              <br />
+              <button type="button" onClick={() => this.generateCV()}>
+                Generate CV
+              </button>
+            </div>
+          ) : (
+            <div className="cv">
+              <CV
+                general={this.state.general}
+                education={this.state.education}
+                experience={this.state.experience}
+                skills={this.state.skills}
+                prevView={this.prevView}
+              />
+            </div>
+          )}
         </article>
       </section>
     );
@@ -136,11 +145,3 @@ class App extends Component {
 
 export default App;
 
-{
-  /* <article className="preview">
-					<h1>CV Preview</h1>
-					<button type="button" onClick={this.previewCV}>Preview Resume</button>
-					<GeneralPreview general={this.state.general} />
-					<EducationPreview educationList={this.state.educationList} />
-				</article> */
-}

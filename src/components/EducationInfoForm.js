@@ -14,7 +14,8 @@ export default class EducationInfoForm extends Component {
      
     this.state = {
       education: this.props.education,
-      degreeLevel: ["Bachelors", "Masters", "Certificate", "Doctorate"],
+      degreeOptions: ["Bachelors", "Masters", "Certificate", "Doctorate"],
+      designationOptions: ["Science", "Arts"],
         view: this.props.view,
         //graduate: ""
     };
@@ -91,7 +92,8 @@ export default class EducationInfoForm extends Component {
       startDate: "",
       endDate: "",
       attending: "",
-        graduate: "",
+      graduate: "",
+        designation: "",
       degree: "",
       id: uniqid(),
     });
@@ -100,10 +102,12 @@ export default class EducationInfoForm extends Component {
 
   render() {
     const { nextView, prevView, education } = this.props;
+    const { degreeOptions, designationOptions } = this.state;
     
     return (
       <div className="education__info">
         <h2>Education Info</h2>
+        <br />
         <form action="" onSubmit={this.handleSubmit}>
           {education.map((entry, index) => {
             const {
@@ -113,6 +117,7 @@ export default class EducationInfoForm extends Component {
               endDate,
               attending,
               graduate,
+              designation,
               degree,
               id,
             } = entry;
@@ -129,6 +134,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
+                <br />
+                <br />
                 <DisplayInput
                   label="Major"
                   name="major"
@@ -139,7 +146,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-
+                <br />
+                <br />
                 <DisplayCheckbox
                   label="Still attending"
                   name="attending"
@@ -148,6 +156,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
+                <br />
+                <br />
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -158,35 +168,58 @@ export default class EducationInfoForm extends Component {
                   id={id}
                 />
                 <br />
-                <DisplayInput
-                  label="Date Ended"
-                  name="endDate"
-                  value={endDate}
-                  type="date"
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
-                <br />
-                <span>Did you graduate?</span>
-                <DisplayRadio
-                  label="Yes"
-                  name={`graduate${index}`}
-                  graduate={graduate}
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
-                <DisplaySelect
-                  label={"Degree"}
-                  value={degree}
-                  name={"degree"}
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
+                {attending === true ? (
+                  ""
+                ) : (
+                  <React.Fragment>
+                    {" "}
+                    <br />
+                    <DisplayInput
+                      label="Date Ended"
+                      name="endDate"
+                      value={endDate}
+                      type="date"
+                      handleInput={this.handleInput}
+                      index={index}
+                      id={id}
+                    />
+                    <br />
+                    <br />
+                    <span>Did you graduate?</span>
+                    <DisplayRadio
+                      label="Yes"
+                      name={`graduate${index}`}
+                      graduate={graduate}
+                      handleInput={this.handleInput}
+                      index={index}
+                      id={id}
+                    />
+                    <br />
+                      <br />
+                      {graduate === "yes" ? <React.Fragment><DisplaySelect
+                      label={"Degree"}
+                      value={degree}
+                      name={"degree"}
+                      handleInput={this.handleInput}
+                      options={degreeOptions}
+                      index={index}
+                      id={id}
+                    />
+                    <br />
+                    <DisplaySelect
+                      label={"Designation"}
+                      value={designation}
+                      name={"designation"}
+                      handleInput={this.handleInput}
+                      options={designationOptions}
+                      index={index}
+                      id={id}
+                    />
+                    <br /></React.Fragment> : ""}
+                    
+                  </React.Fragment>
+                )}
 
-                <br />
                 <div key={id}>
                   <button type="button" onClick={() => this.delete(index)}>
                     Delete Entry <FiTrash2 />
@@ -205,8 +238,7 @@ export default class EducationInfoForm extends Component {
         <br />
         <button onClick={prevView}>
           <FiArrowLeft /> Go Back
-        </button>
-        <button onClick={nextView}>
+        </button>   <button onClick={nextView}>
           Next <FiArrowRight />
         </button>
       </div>

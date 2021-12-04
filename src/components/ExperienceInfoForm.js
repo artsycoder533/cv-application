@@ -64,6 +64,7 @@ export default class ExperienceInfoForm extends Component {
     return (
       <div className="experience__info">
         <h2>Experience</h2>
+        <br />
         <form action="">
           {experience.map((entry, index) => {
             const { title, company, startDate, endDate, employed, duties, id } =
@@ -80,6 +81,8 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
+                <br />
+                <br />
                 <DisplayInput
                   label="Company"
                   name="company"
@@ -90,6 +93,18 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
+                <br />
+                <br />
+                <DisplayCheckbox
+                  label="Still Employed?"
+                  name="employed"
+                  value={employed}
+                  handleInput={this.handleInput}
+                  index={index}
+                  id={id}
+                />
+                <br />
+                <br />
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -100,37 +115,23 @@ export default class ExperienceInfoForm extends Component {
                   id={id}
                 />
                 <br />
+                <br />
                 {employed ? (
-                  <DisplayInput
-                    label="Date Ended"
-                    name="endDate"
-                    value={endDate}
-                    type="date"
-                    handleInput={this.handleInput}
-                    index={index}
-                    id={id}
-                    disabled={true}
-                  />
+                  ""
                 ) : (
-                  <DisplayInput
-                    label="Date Ended"
-                    name="endDate"
-                    value={endDate}
-                    type="date"
-                    handleInput={this.handleInput}
-                    index={index}
-                    id={id}
-                  />
+                  <React.Fragment>
+                    <DisplayInput
+                      label="Date Ended"
+                      name="endDate"
+                      value={endDate}
+                      type="date"
+                      handleInput={this.handleInput}
+                      index={index}
+                      id={id}
+                    />
+                  </React.Fragment>
                 )}
-
-                <DisplayCheckbox
-                  label="Still Employed?"
-                  name="employed"
-                  value={employed}
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
+                <br />
                 <DisplayTextarea
                   type={"textarea"}
                   label={"Duties"}
@@ -161,7 +162,7 @@ export default class ExperienceInfoForm extends Component {
         <br />
         <button onClick={prevView}>
           <FiArrowLeft /> Go Back
-        </button>
+        </button>{" "}
         <button onClick={nextView}>
           Next <FiArrowRight />
         </button>

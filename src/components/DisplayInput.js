@@ -7,13 +7,10 @@ export default class DisplayInput extends Component {
   }
 
     render() {
-     
-      // console.log(this.props);
-      // console.log(this.props.index);
+
         return (
-          <div>
-            <label htmlFor={this.props.name}>{this.props.label}</label>
-            <br />
+          <React.Fragment>
+            <label htmlFor={this.props.name}>{this.props.label}: </label>
             <input
               onChange={(e)=>this.props.handleInput(e, this.props.index)}
               name={this.props.name}
@@ -22,7 +19,7 @@ export default class DisplayInput extends Component {
               placeholder={this.props.placeholder}
               id={this.props.id}
             />
-          </div>
+          </React.Fragment>
         );
     }
 }
