@@ -23,16 +23,18 @@ export default class CV extends Component {
           {experience.map((exp) => {
             const { title, company, startDate, endDate, employed, duties } =
               exp;
+            console.log(startDate);
             return (
               <React.Fragment>
                 <h3>{title}</h3>
                 <p>{company}</p>
-                <span>{startDate}</span>
 
                 {employed === true ? (
-                  <span> - Present</span>
+                  <span>{startDate} - Present</span>
                 ) : (
-                  <span>{endDate}</span>
+                  <span>
+                    {startDate} - {endDate}
+                  </span>
                 )}
                 <p>{duties}</p>
               </React.Fragment>
@@ -74,6 +76,7 @@ export default class CV extends Component {
           })}
         </div>
         <div className="skills">
+          <h4>Education</h4>
           <ul>
             {skills.map((skill) => {
               return (
