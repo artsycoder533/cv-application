@@ -6,7 +6,7 @@ export default class DisplaySelect extends Component {
     const { label, value, name, handleInput, index, options } = this.props;
 
     return (
-      <div>
+      <React.Fragment>
         <label>{label}</label>
         <select
           name={name}
@@ -19,7 +19,7 @@ export default class DisplaySelect extends Component {
             return <option key={uniqid()}>{level}</option>;
           })}
         </select>
-      </div>
+      </React.Fragment>
     );
   }
 }

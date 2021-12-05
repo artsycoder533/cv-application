@@ -70,7 +70,7 @@ export default class EducationInfoForm extends Component {
       <div className="education__info">
         <h2>Education Info</h2>
         <br />
-        <form action="" onSubmit={this.handleSubmit}>
+        <form action="" onSubmit={this.handleSubmit} className="education_form">
           {education.map((entry, index) => {
             const {
               school,
@@ -96,8 +96,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
+                {/* <br />
+                <br /> */}
                 <DisplayInput
                   label="Major"
                   name="major"
@@ -108,8 +108,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
+                {/* <br />
+                <br /> */}
                 <DisplayCheckbox
                   label="Still attending"
                   name="attending"
@@ -118,8 +118,8 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
+                {/* <br /> */}
+                {/* <br /> */}
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -129,13 +129,13 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
+                {/* <br /> */}
                 {attending === true ? (
                   ""
                 ) : (
                   <React.Fragment>
                     {" "}
-                    <br />
+                    {/* <br /> */}
                     <DisplayInput
                       label="Date Ended"
                       name="endDate"
@@ -145,21 +145,23 @@ export default class EducationInfoForm extends Component {
                       index={index}
                       id={id}
                     />
-                    <br />
-                    <br />
-                    <span>Did you graduate?</span>
-                    <DisplayRadio
-                      label="Yes"
-                      name={`graduate${index}`}
-                      graduate={graduate}
-                      handleInput={this.handleInput}
-                      index={index}
-                      id={id}
-                    />
-                    <br />
-                    <br />
+                    {/* <br />
+                    <br /> */}
+                    <div className="radios">
+                      Did you graduate?
+                      <DisplayRadio
+                        label="Yes"
+                        name={`graduate${index}`}
+                        graduate={graduate}
+                        handleInput={this.handleInput}
+                        index={index}
+                        id={id}
+                      />
+                    </div>
+                    {/* <br />
+                    <br /> */}
                     {graduate === "yes" ? (
-                      <React.Fragment>
+                      <div>
                         <DisplaySelect
                           label={"Degree"}
                           value={degree}
@@ -169,7 +171,7 @@ export default class EducationInfoForm extends Component {
                           index={index}
                           id={id}
                         />
-                        <br />
+                        {/* <br /> */}
                         <DisplaySelect
                           label={"Designation"}
                           value={designation}
@@ -180,7 +182,7 @@ export default class EducationInfoForm extends Component {
                           id={id}
                         />
                         <br />
-                      </React.Fragment>
+                      </div>
                     ) : (
                       ""
                     )}

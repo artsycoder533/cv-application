@@ -71,7 +71,7 @@ class GeneralInfoForm extends Component {
       <div className="general__info">
         <h2>General Info</h2>
         <br />
-        <form action="" onSubmit={this.handleSubmit}>
+        <form action="" onSubmit={this.handleSubmit} className="general__form">
           <DisplayInput
             label="Name"
             name="name"
@@ -81,8 +81,8 @@ class GeneralInfoForm extends Component {
             placeholder={name}
             key={uniqid}
           />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <DisplayInput
             label="Email"
             name="email"
@@ -91,8 +91,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={email}
           />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <DisplayInput
             label="Phone"
             name="phone"
@@ -101,8 +101,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={phone}
           />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <DisplayInput
             label="Portfolio"
             name="portfolio"
@@ -111,8 +111,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={portfolio}
           />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <DisplayInput
             label="LinkedIn"
             name="linkedIn"
@@ -121,8 +121,8 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={linkedIn}
           />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           <DisplayInput
             label="Github"
             name="github"
@@ -131,12 +131,12 @@ class GeneralInfoForm extends Component {
             handleInput={this.handleInput}
             placeholder={github}
           />
-          <br />
-          <br />
-          <button onClick={nextView}>
-            Next <FiArrowRight />
-          </button>
+          {/* <br /> */}
+          {/* <br /> */}
         </form>
+        <button onClick={nextView}>
+          Next <FiArrowRight />
+        </button>
       </div>
     );
   }

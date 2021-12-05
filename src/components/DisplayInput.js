@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class DisplayInput extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div>
         <label htmlFor={this.props.name}>{this.props.label}: </label>
         <input
           onChange={(e) => this.props.handleInput(e, this.props.index)}
@@ -13,7 +13,7 @@ export default class DisplayInput extends Component {
           placeholder={this.props.placeholder}
           id={this.props.id}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

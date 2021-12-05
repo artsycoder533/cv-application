@@ -10,7 +10,7 @@ export default class DisplayRadio extends Component {
     const { name, handleInput, comp, index, graduate, id } = this.props;
 
     return (
-      <React.Fragment>
+      <div>
         {this.state.values.map((val) => {
           console.log(name, val);
           return (
@@ -26,7 +26,7 @@ export default class DisplayRadio extends Component {
             </React.Fragment>
           );
         })}
-      </React.Fragment>
+      </div>
     );
   }
 }
