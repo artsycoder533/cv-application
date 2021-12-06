@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { FiEdit3 } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
 import { FiArrowRight, FiArrowLeft, FiPlus } from "react-icons/fi";
-import DisplayInput from "./DisplayInput";
-import DisplayRadio from "./DisplayRadio";
-import DisplayCheckbox from "./DisplayCheckbox";
-import DisplaySelect from "./DisplaySelect";
-import DisplayTextarea from './DisplayTextarea';
+import DisplayInput from '../DisplayInput/DisplayInput';
+import DisplayCheckbox from '../DisplayCheckbox/DisplayCheckbox';
+import DisplayTextarea from '../../DisplayTextArea/DisplayTextarea';
 import uniqid from "uniqid";
+import { StyledForm } from '../Form/style';
+import { IconButton } from '../Button/style';
 
 export default class ExperienceInfoForm extends Component {
   constructor(props) {
@@ -65,7 +64,7 @@ export default class ExperienceInfoForm extends Component {
       <div className="experience__info">
         <h2>Experience</h2>
         <br />
-        <form action="">
+        <StyledForm action="">
           {experience.map((entry, index) => {
             const { title, company, startDate, endDate, employed, duties, id } =
               entry;
@@ -81,8 +80,6 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
                 <DisplayInput
                   label="Company"
                   name="company"
@@ -93,8 +90,6 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
                 <DisplayCheckbox
                   label="Still Employed?"
                   name="employed"
@@ -103,8 +98,6 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -114,8 +107,6 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <br />
-                <br />
                 {employed ? (
                   ""
                 ) : (
@@ -131,7 +122,6 @@ export default class ExperienceInfoForm extends Component {
                     />
                   </React.Fragment>
                 )}
-                <br />
                 <DisplayTextarea
                   type={"textarea"}
                   label={"Duties"}
@@ -142,30 +132,19 @@ export default class ExperienceInfoForm extends Component {
                   index={index}
                   handleInput={this.handleInput}
                 />
-                <br />
                 <div key={id}>
                   <button type="button" onClick={() => this.delete(index)}>
                     Delete Entry <FiTrash2 />
                   </button>
-                  <br />
-                  <br />
                 </div>
               </React.Fragment>
             );
           })}
-        </form>
+        </StyledForm>
         <br />
-        <button type="button" onClick={() => this.addNewEntry()}>
+        <IconButton type="button" onClick={() => this.addNewEntry()}>
           Add Entry <FiPlus />
-        </button>
-        <br />
-        <br />
-        <button onClick={prevView}>
-          <FiArrowLeft /> Go Back
-        </button>{" "}
-        <button onClick={nextView}>
-          Next <FiArrowRight />
-        </button>
+        </IconButton>
       </div>
     );
   }

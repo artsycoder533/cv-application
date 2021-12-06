@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
-import DisplayInput from "./DisplayInput";
-import DisplayRadio from "./DisplayRadio";
-import DisplayCheckbox from "./DisplayCheckbox";
-import DisplaySelect from "./DisplaySelect";
+import DisplayInput from "../DisplayInput/DisplayInput";
+import DisplayRadio from "../DisplayRadio/DisplayRadio";
+import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
+import DisplaySelect from "../DisplaySelect/DisplaySelect";
+import { IconButton, StyledTrashIcon } from "../Button/style";
 import uniqid from "uniqid";
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import { ButtonWrapper, Container, EntryWrapper } from "./style";
+import { EducationForm, StyledForm} from "../Form/style";
+import { StyledTitle } from "../Title/style";
+import { FormWrapper } from "../GeneralInfo/style";
 
 export default class EducationInfoForm extends Component {
   constructor(props) {
@@ -63,14 +67,14 @@ export default class EducationInfoForm extends Component {
   };
 
   render() {
-    const { nextView, prevView, education } = this.props;
+    const { education } = this.props;
     const { degreeOptions, designationOptions } = this.state;
 
     return (
-      <div className="education__info">
-        <h2>Education Info</h2>
-        <br />
-        <form action="" onSubmit={this.handleSubmit} className="education_form">
+      <Container>
+        <StyledTitle>Education</StyledTitle>
+        <FormWrapper>
+        <StyledForm action="" onSubmit={this.handleSubmit} className="education_form">
           {education.map((entry, index) => {
             const {
               school,
@@ -85,6 +89,7 @@ export default class EducationInfoForm extends Component {
             } = entry;
 
             return (
+
               <React.Fragment key={id}>
                 <DisplayInput
                   label="School"
@@ -96,8 +101,6 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                {/* <br />
-                <br /> */}
                 <DisplayInput
                   label="Major"
                   name="major"
@@ -108,8 +111,6 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                {/* <br />
-                <br /> */}
                 <DisplayCheckbox
                   label="Still attending"
                   name="attending"
@@ -118,8 +119,6 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                {/* <br /> */}
-                {/* <br /> */}
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -129,13 +128,11 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                {/* <br /> */}
                 {attending === true ? (
                   ""
                 ) : (
                   <React.Fragment>
                     {" "}
-                    {/* <br /> */}
                     <DisplayInput
                       label="Date Ended"
                       name="endDate"
@@ -145,10 +142,7 @@ export default class EducationInfoForm extends Component {
                       index={index}
                       id={id}
                     />
-                    {/* <br />
-                    <br /> */}
                     <div className="radios">
-                      Did you graduate?
                       <DisplayRadio
                         label="Yes"
                         name={`graduate${index}`}
@@ -158,9 +152,7 @@ export default class EducationInfoForm extends Component {
                         id={id}
                       />
                     </div>
-                    {/* <br />
-                    <br /> */}
-                    {graduate === "yes" ? (
+                    {graduate === "Yes" ? (
                       <div>
                         <DisplaySelect
                           label={"Degree"}
@@ -171,7 +163,6 @@ export default class EducationInfoForm extends Component {
                           index={index}
                           id={id}
                         />
-                        {/* <br /> */}
                         <DisplaySelect
                           label={"Designation"}
                           value={designation}
@@ -181,7 +172,6 @@ export default class EducationInfoForm extends Component {
                           index={index}
                           id={id}
                         />
-                        <br />
                       </div>
                     ) : (
                       ""
@@ -189,29 +179,22 @@ export default class EducationInfoForm extends Component {
                   </React.Fragment>
                 )}
 
-                <div key={id}>
-                  <button type="button" onClick={() => this.delete(index)}>
-                    Delete Entry <FiTrash2 />
-                  </button>
-                  <br />
-                  <br />
-                </div>
+                <ButtonWrapper key={id}>
+                  <IconButton type="button" onClick={() => this.delete(index)}>
+                     <StyledTrashIcon />
+                  </IconButton>
+                  {/* <br />
+                  <br /> */}
+                </ButtonWrapper>
               </React.Fragment>
             );
           })}
-        </form>
-        <button type="button" onClick={() => this.addNewEntry()}>
+        </StyledForm>
+       </FormWrapper>
+        {/* <IconButton type="button" onClick={() => this.addNewEntry()}>
           Add Entry <FiPlus />
-        </button>
-        <br />
-        <br />
-        <button onClick={prevView}>
-          <FiArrowLeft /> Go Back
-        </button>{" "}
-        <button onClick={nextView}>
-          Next <FiArrowRight />
-        </button>
-      </div>
+        </IconButton> */}
+      </Container>
     );
   }
 }

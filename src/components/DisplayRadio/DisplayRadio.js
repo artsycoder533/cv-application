@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { StyledRadio,  Container } from "./style";
 
 export default class DisplayRadio extends Component {
   state = {
-    values: ["yes", "no"],
+    values: ["Yes", "No"],
     graduate: this.props.graduate,
   };
 
@@ -10,12 +11,12 @@ export default class DisplayRadio extends Component {
     const { name, handleInput, comp, index, graduate, id } = this.props;
 
     return (
-      <div>
+      <Container>
+        <span>Did you graduate?</span>
         {this.state.values.map((val) => {
-          console.log(name, val);
           return (
-            <React.Fragment>
-              <input
+            <div>
+              <StyledRadio
                 type="radio"
                 name={name}
                 value={val}
@@ -23,10 +24,10 @@ export default class DisplayRadio extends Component {
                 onChange={(e) => handleInput(e, index)}
               />
               <label htmlFor={name}>{val}</label>
-            </React.Fragment>
+            </div>
           );
         })}
-      </div>
+      </Container>
     );
   }
 }

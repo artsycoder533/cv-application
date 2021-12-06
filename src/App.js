@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import uniqid from "uniqid";
-import GeneralInfoForm from "./components/GeneralInfoForm";
-import EducationInfoForm from "./components/EducationInfoForm";
-import ExperienceInfoForm from "./components/ExperienceInfoForm";
+import GeneralInfoForm from "./components/GeneralInfo/GeneralInfoForm";
+import EducationInfoForm from "./components/EducationInfo/EducationInfoForm";
+import ExperienceInfoForm from "./components/ExperienceInfo/ExperienceInfoForm";
 import SkillsInfoForm from "./components/SkillsInfoForm";
 import CV from "./components/CV";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
+
 
 class App extends Component {
   constructor(props) {
@@ -45,7 +49,7 @@ class App extends Component {
         },
       ],
       skills: [""],
-      view: 0,
+      view: 1,
     };
   }
 
@@ -64,7 +68,6 @@ class App extends Component {
 
   prevView = (e) => {
     e.preventDefault();
-    console.log("prev");
     const copyOfState = { ...this.state };
     copyOfState.view--;
     this.setState(copyOfState);
@@ -74,27 +77,23 @@ class App extends Component {
     const { view } = this.state;
     return (
       <section className="App">
+       <Header/>
+        <ProgressBar />
         <article className="builder">
-          {/* <h1>CV Application</h1> */}
           {view === 0 ? (
             <GeneralInfoForm
               general={this.state.general}
-              nextView={this.nextView}
               addNewEntry={this.addNewEntry}
             />
           ) : view === 1 ? (
             <div>
               <EducationInfoForm
                 education={this.state.education}
-                nextView={this.nextView}
-                prevView={this.prevView}
               />
             </div>
           ) : view === 2 ? (
             <div>
               <ExperienceInfoForm
-                nextView={this.nextView}
-                prevView={this.prevView}
                 experience={this.state.experience}
               />
             </div>
@@ -102,7 +101,6 @@ class App extends Component {
             <div>
               <SkillsInfoForm
                 skills={this.state.skills}
-                prevView={this.prevView}
               />
               <br />
               <button type="button" onClick={() => this.generateCV()}>
@@ -116,11 +114,11 @@ class App extends Component {
                 education={this.state.education}
                 experience={this.state.experience}
                 skills={this.state.skills}
-                prevView={this.prevView}
               />
             </div>
           )}
         </article>
+        <Footer prevView = { this.prevView } nextView={this.nextView}/>
       </section>
     );
   }

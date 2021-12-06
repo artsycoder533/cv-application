@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FiEdit3 } from "react-icons/fi";
 import { FiTrash2, FiPlus, FiArrowLeft } from "react-icons/fi";
-import DisplayInput from "./DisplayInput";
+import DisplayInput from "./DisplayInput/DisplayInput";
 import uniqid from "uniqid";
 
 export default class SkillsInfoForm extends Component {

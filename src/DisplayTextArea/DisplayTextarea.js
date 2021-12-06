@@ -1,21 +1,16 @@
 import React, { Component } from "react";
+import { StyledTextArea, StyledLabel } from "./style";
 
 export default class DisplayTextarea extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
 
   render() {
     const { type, label, name, cols, rows, index, handleInput, value } =
       this.props;
-    console.log(this.props);
     return (
       <div>
-        <label htmlFor={name}>{label}</label>
+        <StyledLabel htmlFor={name}>{label}</StyledLabel>
         <br />
-        <textarea
+        <StyledTextArea
           type={type}
           name={name}
           cols={cols}

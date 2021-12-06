@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { StyledInput , StyledLabel, Container} from "./style";
 
 export default class DisplayInput extends Component {
   render() {
     return (
-      <div>
-        <label htmlFor={this.props.name}>{this.props.label}: </label>
-        <input
+      <Container>
+        <StyledLabel htmlFor={this.props.name}>{this.props.label}: </StyledLabel>
+        <StyledInput
           onChange={(e) => this.props.handleInput(e, this.props.index)}
           name={this.props.name}
           value={this.props.value}
@@ -13,7 +14,7 @@ export default class DisplayInput extends Component {
           placeholder={this.props.placeholder}
           id={this.props.id}
         />
-      </div>
+      </Container>
     );
   }
 }
