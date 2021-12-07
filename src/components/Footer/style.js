@@ -12,5 +12,9 @@ export const StyledFooter = styled.footer`
   z-index: 1;
   background: white;
   border-top: 1px solid lightgray;
+
+  @media print {
+    display: none;
+  }
 `;
 

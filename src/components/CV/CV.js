@@ -9,16 +9,18 @@ import {
 } from "react-icons/fi";
 import { Container, StyledTitle, StyledSectionTitle, JobDate, HeaderSection, List, JobTitle, Description } from "./style";
 
+import { DownloadButton } from "../Button/style";
+
 export default class CV extends Component {
   render() {
     const { general, education, experience, skills} = this.props;
     const { name, email, phone, portfolio, linkedIn, github } = general;
-
+    console.log(this.props);
     return (
       <Container className="cv">
         <StyledTitle>{name}</StyledTitle>
-        <br/>
-        <HeaderSection className="general">
+        <br />
+        <HeaderSection >
           <span>
             <FiPhone /> {phone}
           </span>{" "}
@@ -88,18 +90,21 @@ export default class CV extends Component {
                 <JobTitle>{school}</JobTitle>
                 {graduate === "Yes" ? (
                   <JobDate>
-                  <span>
-                    {degree} of {designation}, {major}</span> <span>Graduated {endDate}
-                  </span> </JobDate>
+                    <span>
+                      {degree} of {designation}, {major}
+                    </span>{" "}
+                    <span>Graduated {endDate}</span>{" "}
+                  </JobDate>
                 ) : attending === true ? (
-                  <JobDate><span>{major}</span><span>{startDate} - Present</span></JobDate>
+                  <JobDate>
+                    <span>{major}</span>
+                    <span>{startDate} - Present</span>
+                  </JobDate>
                 ) : (
                   <h4>
                     {startDate} - {endDate}
                   </h4>
-                  
                 )}
-                
               </React.Fragment>
             );
           })}

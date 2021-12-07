@@ -12,6 +12,10 @@ export const Container = styled.header`
   top: 0;
   left: 0;
   width: 100%;
+
+  @media print {
+    display: none;
+  }
 `;
 
 export const Title = styled.h1`

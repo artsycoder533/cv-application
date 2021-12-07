@@ -9,7 +9,9 @@ import CV from "./components/CV/CV";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
-
+import ReactToPrint from "react-to-print";
+import ComponentToPrint from "./components/ReactToPrint/ComponentToPrint";
+import { DownloadButton, PlainButton } from "./components/Button/style";
 
 class App extends Component {
   constructor(props) {
@@ -88,9 +90,16 @@ class App extends Component {
     const { view } = this.state;
     return (
       <section className="App">
-        <Header />
+
+        <Header className="hide" />
         {view > 3 ? "" : <ProgressBar />}
 
+        {/* <ReactToPrint
+          trigger={() => {
+            return <DownloadButton>Download PDF</DownloadButton>;
+          }}
+          content={() => this.componentRef}
+        /> */}
         <article className="builder">
           {view === 0 ? (
             <GeneralInfoForm
@@ -119,16 +128,19 @@ class App extends Component {
                 education={this.state.education}
                 experience={this.state.experience}
                 skills={this.state.skills}
+                ref={(el) => (this.componentRef = el)}
               />
             </div>
           )}
         </article>
-        <Footer
-          prevView={this.prevView}
-          nextView={this.nextView}
-          view={this.state.view}
-          generateCV={this.generateCV}
-        />
+          <Footer
+            className="hide"
+            prevView={this.prevView}
+            nextView={this.nextView}
+            view={this.state.view}
+            generateCV={this.generateCV}
+          />
+      
       </section>
     );
   }

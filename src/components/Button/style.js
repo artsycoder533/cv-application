@@ -61,3 +61,14 @@ export const AbsoluteSkillsTrashButton = styled(StyledButton)`
   background: none;
   width: 5rem;
 `;
+
+export const DownloadButton = styled(PlainButton)`
+  z-index: 2;
+  position: absolute;
+  right: 10px;
+  top: 11px;
+
+  @media print {
+    display: none;
+  }
+`;

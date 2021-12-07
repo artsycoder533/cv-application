@@ -17,7 +17,7 @@ export const EntryWrapper = styled.div`
   border-radius: 10px;
   padding: 3rem;
   background: white;
-  border: 2px solid green;
+  
 `;
 
 export const FormWrapper = styled.div`

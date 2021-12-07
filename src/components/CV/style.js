@@ -5,7 +5,6 @@ export const Container = styled.div`
     top: 75px;
     width: 100%;
     height: 100%;
-    border: 2px solid red;
     padding: 3rem;
 `;
 
@@ -29,6 +28,7 @@ export const List = styled.ul`
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 1rem;
 `;
 
 export const JobTitle = styled.h3`
