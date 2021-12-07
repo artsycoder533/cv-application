@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { FiTrash2 } from "react-icons/fi";
-import { FiArrowRight, FiArrowLeft, FiPlus } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 import DisplayInput from '../DisplayInput/DisplayInput';
 import DisplayCheckbox from '../DisplayCheckbox/DisplayCheckbox';
-import DisplayTextarea from '../../DisplayTextArea/DisplayTextarea';
+import DisplayTextarea from '../DisplayTextArea/DisplayTextarea';
 import uniqid from "uniqid";
-import { StyledForm } from '../Form/style';
-import { IconButton } from '../Button/style';
+import { StyledFormWithScroll } from '../Form/style';
+import { AbsoluteIconButton, StyledTrashIcon, AbsoluteTrashButton } from '../Button/style';
+import { Container, EntryWrapper, FormWrapper } from './style';
+import { StyledTitle } from '../Title/style';
 
 export default class ExperienceInfoForm extends Component {
   constructor(props) {
@@ -23,15 +24,10 @@ export default class ExperienceInfoForm extends Component {
     const { experience } = copyOfState;
 
     let entry = experience[index];
-    //if input type is a checkbox
     input.type === "checkbox"
       ? (entry[input.name] = input.checked)
           : (entry[input.name] = input.value);
- 
-    // //if input type is radio
-    // if (input.type === "radio") {
-    //   entry.graduate = input.value;
-    // }
+
     this.setState(copyOfState);
   };
 
@@ -58,94 +54,105 @@ export default class ExperienceInfoForm extends Component {
   };
 
   render() {
-    const { prevView, nextView, experience } = this.props;
-    // const { title, company, startDate, endDate, employed, duties, id } = experience;
+    const { experience } = this.props;
+    
     return (
-      <div className="experience__info">
-        <h2>Experience</h2>
-        <br />
-        <StyledForm action="">
-          {experience.map((entry, index) => {
-            const { title, company, startDate, endDate, employed, duties, id } =
-              entry;
-            return (
-              <React.Fragment key={id}>
-                <DisplayInput
-                  label="Job Title"
-                  name="title"
-                  value={title}
-                  type="text"
-                  handleInput={this.handleInput}
-                  placeholder={title}
-                  index={index}
-                  id={id}
-                />
-                <DisplayInput
-                  label="Company"
-                  name="company"
-                  value={company}
-                  type="text"
-                  handleInput={this.handleInput}
-                  placeholder={company}
-                  index={index}
-                  id={id}
-                />
-                <DisplayCheckbox
-                  label="Still Employed?"
-                  name="employed"
-                  value={employed}
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
-                <DisplayInput
-                  label="Date Started"
-                  name="startDate"
-                  value={startDate}
-                  type="date"
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
-                {employed ? (
-                  ""
-                ) : (
-                  <React.Fragment>
-                    <DisplayInput
-                      label="Date Ended"
-                      name="endDate"
-                      value={endDate}
-                      type="date"
-                      handleInput={this.handleInput}
-                      index={index}
-                      id={id}
-                    />
-                  </React.Fragment>
-                )}
-                <DisplayTextarea
-                  type={"textarea"}
-                  label={"Duties"}
-                  value={duties}
-                  name="duties"
-                  cols={30}
-                  rows={10}
-                  index={index}
-                  handleInput={this.handleInput}
-                />
-                <div key={id}>
-                  <button type="button" onClick={() => this.delete(index)}>
-                    Delete Entry <FiTrash2 />
-                  </button>
-                </div>
-              </React.Fragment>
-            );
-          })}
-        </StyledForm>
-        <br />
-        <IconButton type="button" onClick={() => this.addNewEntry()}>
+      <Container>
+        <StyledTitle>Experience</StyledTitle>
+        <FormWrapper>
+          <StyledFormWithScroll action="">
+            {experience.map((entry, index) => {
+              const {
+                title,
+                company,
+                startDate,
+                endDate,
+                employed,
+                duties,
+                id,
+              } = entry;
+              return (
+                <EntryWrapper key={id}>
+                  <DisplayInput
+                    label="Job Title"
+                    name="title"
+                    value={title}
+                    type="text"
+                    handleInput={this.handleInput}
+                    placeholder={title}
+                    index={index}
+                    id={id}
+                  />
+                  <DisplayInput
+                    label="Company"
+                    name="company"
+                    value={company}
+                    type="text"
+                    handleInput={this.handleInput}
+                    placeholder={company}
+                    index={index}
+                    id={id}
+                  />
+                  <DisplayCheckbox
+                    label="Check if still employed"
+                    name="employed"
+                    value={employed}
+                    handleInput={this.handleInput}
+                    index={index}
+                    id={id}
+                  />
+                  <DisplayInput
+                    label="Date Started"
+                    name="startDate"
+                    value={startDate}
+                    type="date"
+                    handleInput={this.handleInput}
+                    index={index}
+                    id={id}
+                  />
+                  {employed ? (
+                    ""
+                  ) : (
+                    <React.Fragment>
+                      <DisplayInput
+                        label="Date Ended"
+                        name="endDate"
+                        value={endDate}
+                        type="date"
+                        handleInput={this.handleInput}
+                        index={index}
+                        id={id}
+                      />
+                    </React.Fragment>
+                  )}
+                  <DisplayTextarea
+                    type={"textarea"}
+                    label={"Duties"}
+                    value={duties}
+                    name="duties"
+                    cols={30}
+                    rows={10}
+                    index={index}
+                    handleInput={this.handleInput}
+                  />
+                  {index === 0 ? (
+                    ""
+                  ) : (
+                    <AbsoluteTrashButton
+                      type="button"
+                      onClick={() => this.delete(index)}>
+                      <StyledTrashIcon />
+                    </AbsoluteTrashButton>
+                  )}
+                </EntryWrapper>
+              );
+            })}
+          </StyledFormWithScroll>
+        </FormWrapper>
+        <AbsoluteIconButton type="button" onClick={() => this.addNewEntry()}>
           Add Entry <FiPlus />
-        </IconButton>
-      </div>
+        </AbsoluteIconButton>
+      </Container>
     );
   }
 }

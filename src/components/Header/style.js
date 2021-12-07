@@ -8,6 +8,10 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 `;
 
 export const Title = styled.h1`

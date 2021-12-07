@@ -43,3 +43,21 @@ export const StyledTrashIcon = styled(FiTrash2)`
     transform: scale(1.1);
   }
 `;
+
+export const AbsoluteIconButton = styled(StyledButton)`
+  position: absolute;
+  right: 10px;
+  top: 37px;
+  z-index: 2;
+`;
+
+export const AbsoluteTrashButton = styled(IconButton)`
+  position: absolute;
+  right: 60px;
+  padding: 1rem;
+`;
+
+export const AbsoluteSkillsTrashButton = styled(StyledButton)`
+  background: none;
+  width: 5rem;
+`;

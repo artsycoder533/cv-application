@@ -5,12 +5,12 @@ import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayRadio from "../DisplayRadio/DisplayRadio";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
 import DisplaySelect from "../DisplaySelect/DisplaySelect";
-import { IconButton, StyledTrashIcon } from "../Button/style";
+import { AbsoluteIconButton, AbsoluteTrashButton, IconButton, StyledTrashIcon } from "../Button/style";
 import uniqid from "uniqid";
 import { ButtonWrapper, Container, EntryWrapper } from "./style";
-import { EducationForm, StyledForm} from "../Form/style";
+import { EducationForm, StyledForm, StyledFormWithScroll} from "../Form/style";
 import { StyledTitle } from "../Title/style";
-import { FormWrapper } from "../GeneralInfo/style";
+import { FormWrapper } from "./style";
 
 export default class EducationInfoForm extends Component {
   constructor(props) {
@@ -39,6 +39,15 @@ export default class EducationInfoForm extends Component {
     if (input.type === "radio") {
       entry.graduate = input.value;
     }
+    //if attending, unselect radio
+    input.type === "checkbox"
+      ? (entry["graduate"] = "No") 
+      : (entry["graduate"] = input.value);
+    
+    //if graduated, unselect attending
+    input.type === "radio" && entry["graduate"] === "Yes" 
+      ? (entry["attending"] = "")
+      : (entry["attending"] = input.value);
     this.setState(copyOfState);
   };
 
@@ -74,7 +83,7 @@ export default class EducationInfoForm extends Component {
       <Container>
         <StyledTitle>Education</StyledTitle>
         <FormWrapper>
-        <StyledForm action="" onSubmit={this.handleSubmit} className="education_form">
+        <StyledFormWithScroll action="" onSubmit={this.handleSubmit} className="education_form">
           {education.map((entry, index) => {
             const {
               school,
@@ -89,8 +98,7 @@ export default class EducationInfoForm extends Component {
             } = entry;
 
             return (
-
-              <React.Fragment key={id}>
+              <EntryWrapper key={id}>
                 <DisplayInput
                   label="School"
                   name="school"
@@ -112,7 +120,7 @@ export default class EducationInfoForm extends Component {
                   id={id}
                 />
                 <DisplayCheckbox
-                  label="Still attending"
+                  label="Check if still attending"
                   name="attending"
                   value={attending}
                   handleInput={this.handleInput}
@@ -178,22 +186,23 @@ export default class EducationInfoForm extends Component {
                     )}
                   </React.Fragment>
                 )}
-
-                <ButtonWrapper key={id}>
-                  <IconButton type="button" onClick={() => this.delete(index)}>
-                     <StyledTrashIcon />
-                  </IconButton>
-                  {/* <br />
-                  <br /> */}
-                </ButtonWrapper>
-              </React.Fragment>
+                {index === 0 ? (
+                  ""
+                ) : (
+                  <AbsoluteTrashButton
+                    type="button"
+                    onClick={() => this.delete(index)}>
+                    <StyledTrashIcon />
+                  </AbsoluteTrashButton>
+                )}
+              </EntryWrapper>
             );
           })}
-        </StyledForm>
+        </StyledFormWithScroll>
        </FormWrapper>
-        {/* <IconButton type="button" onClick={() => this.addNewEntry()}>
+        <AbsoluteIconButton type="button" onClick={() => this.addNewEntry()}>
           Add Entry <FiPlus />
-        </IconButton> */}
+        </AbsoluteIconButton>
       </Container>
     );
   }

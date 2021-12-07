@@ -11,5 +11,6 @@ export const StyledFooter = styled.footer`
   width: 100%;
   z-index: 1;
   background: white;
+  border-top: 1px solid lightgray;
 `;
 

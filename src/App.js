@@ -4,8 +4,8 @@ import uniqid from "uniqid";
 import GeneralInfoForm from "./components/GeneralInfo/GeneralInfoForm";
 import EducationInfoForm from "./components/EducationInfo/EducationInfoForm";
 import ExperienceInfoForm from "./components/ExperienceInfo/ExperienceInfoForm";
-import SkillsInfoForm from "./components/SkillsInfoForm";
-import CV from "./components/CV";
+import SkillsInfoForm from "./components/SkillsInfo/SkillsInfoForm";
+import CV from "./components/CV/CV";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
@@ -36,6 +36,17 @@ class App extends Component {
           designation: "",
           id: uniqid(),
         },
+        // {
+        //   school: "",
+        //   major: "",
+        //   startDate: "",
+        //   endDate: "",
+        //   attending: "",
+        //   graduate: "",
+        //   degree: "",
+        //   designation: "",
+        //   id: uniqid(),
+        // },
       ],
       experience: [
         {
@@ -49,7 +60,7 @@ class App extends Component {
         },
       ],
       skills: [""],
-      view: 1,
+      view: 0,
     };
   }
 
@@ -77,8 +88,9 @@ class App extends Component {
     const { view } = this.state;
     return (
       <section className="App">
-       <Header/>
-        <ProgressBar />
+        <Header />
+        {view > 3 ? "" : <ProgressBar />}
+
         <article className="builder">
           {view === 0 ? (
             <GeneralInfoForm
@@ -87,25 +99,18 @@ class App extends Component {
             />
           ) : view === 1 ? (
             <div>
-              <EducationInfoForm
-                education={this.state.education}
-              />
+              <EducationInfoForm education={this.state.education} />
             </div>
           ) : view === 2 ? (
             <div>
-              <ExperienceInfoForm
-                experience={this.state.experience}
-              />
+              <ExperienceInfoForm experience={this.state.experience} />
             </div>
           ) : view === 3 ? (
             <div>
-              <SkillsInfoForm
-                skills={this.state.skills}
-              />
-              <br />
-              <button type="button" onClick={() => this.generateCV()}>
+              <SkillsInfoForm skills={this.state.skills} />
+              {/* <button type="button" onClick={() => this.generateCV()}>
                 Generate CV
-              </button>
+              </button> */}
             </div>
           ) : (
             <div className="cv">
@@ -118,7 +123,12 @@ class App extends Component {
             </div>
           )}
         </article>
-        <Footer prevView = { this.prevView } nextView={this.nextView}/>
+        <Footer
+          prevView={this.prevView}
+          nextView={this.nextView}
+          view={this.state.view}
+          generateCV={this.generateCV}
+        />
       </section>
     );
   }

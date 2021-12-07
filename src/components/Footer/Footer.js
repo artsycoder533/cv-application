@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { StyledFooter } from './style';
 import { StyledButton } from '../Button/style';
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import { FiArrowRight, FiArrowLeft, FiSend } from "react-icons/fi";
 
 export default class Footer extends Component {
     render() {
-        const { prevView, nextView } = this.props;
+        const { prevView, nextView, view } = this.props;
         return (
           <StyledFooter>
-            <StyledButton onClick={prevView}>
-              <FiArrowLeft /> Go Back
-            </StyledButton>
-            <StyledButton onClick={nextView}>
-              Next <FiArrowRight />
-            </StyledButton>
+            {view === 0 ? (
+              ""
+            ) : (
+              <StyledButton onClick={prevView}>
+                <FiArrowLeft /> Go Back
+              </StyledButton>
+            )}
+            {view === 3 ? (
+              <StyledButton onClick={nextView}>
+                Generate <FiSend />
+              </StyledButton>
+            ) : (
+              <StyledButton onClick={nextView}>
+                Next <FiArrowRight />
+              </StyledButton>
+            )}
           </StyledFooter>
         );
     }

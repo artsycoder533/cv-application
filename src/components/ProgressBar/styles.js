@@ -8,6 +8,9 @@ export const Container = styled.div`
   width: 100%;
   padding: 1rem;
   height: 100px;
+  position: fixed;
+  top: 75px;
+  background: white;
 `;
 
 export const Circle = styled.div`

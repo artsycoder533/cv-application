@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import uniqid from "uniqid";
 import DisplayInput from "../DisplayInput/DisplayInput";
 import { StyledForm } from "../Form/style";
-import { Container, FormWrapper } from "./style";
+import { Container, EntryWrapper, FormWrapper, GeneralForm } from "./style";
 import { StyledTitle } from "../Title/style";
 
 class GeneralInfoForm extends Component {
@@ -51,10 +51,11 @@ class GeneralInfoForm extends Component {
       <Container>
         <StyledTitle>General Info</StyledTitle>
         <FormWrapper>
-          <StyledForm
+          <GeneralForm
             action=""
             onSubmit={this.handleSubmit}
             className="general__form">
+            <EntryWrapper>
             <DisplayInput
               label="Name"
               name="name"
@@ -104,7 +105,8 @@ class GeneralInfoForm extends Component {
               handleInput={this.handleInput}
               placeholder="www or http(s)"
             />
-          </StyledForm>
+            </EntryWrapper>
+          </GeneralForm>
         </FormWrapper>
       </Container>
     );
