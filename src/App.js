@@ -32,6 +32,8 @@ class App extends Component {
           major: "",
           startDate: "",
           endDate: "",
+          gpa: "",
+          minor: "",
           attending: "",
           graduate: "",
           degree: "",
@@ -91,8 +93,8 @@ class App extends Component {
     return (
       <section className="App">
 
-        <Header className="hide" />
-        {view > 3 ? "" : <ProgressBar />}
+        <Header view={view} className="hide" />
+        {view > 4 ? "" : <ProgressBar view={view}/>}
 
         {/* <ReactToPrint
           trigger={() => {

@@ -15,11 +15,11 @@ export default class Footer extends Component {
                 <FiArrowLeft /> Go Back
               </StyledButton>
             )}
-            {view === 3 ? (
+            {view > 2 && view < 4 ? (
               <StyledButton onClick={nextView}>
                 Generate <FiSend />
               </StyledButton>
-            ) : (
+            ) : view > 3 ? "" : (
               <StyledButton onClick={nextView}>
                 Next <FiArrowRight />
               </StyledButton>

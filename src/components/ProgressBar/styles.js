@@ -9,12 +9,17 @@ export const Container = styled.div`
   padding: 1rem;
   height: 100px;
   position: fixed;
+  /* position: relative; */
   top: 75px;
   background: white;
+
+  @media print {
+    display: none;
+  }
 `;
 
 export const Circle = styled.div`
-  border: 1px solid blue;
+  border: 2px solid blue;
   width: 50px;
   height: 50px;
   display: grid;
@@ -22,8 +27,13 @@ export const Circle = styled.div`
   border-radius: 50%;
   font-size: 25px;
   font-weight: bold;
-  background: blue;
-  color: white;
+  /* background: blue;
+  color: white; */
+  background: ${props => props.current ? "blue" : "white"};
+  color: ${props => props.current ? "white" : "gray"};
+  z-index: 2;
+  
+ 
 `;
 
 export const Step = styled.div`
@@ -34,3 +44,7 @@ export const Step = styled.div`
 export const StyledFiCheck = styled(FiCheck)`
     font-weight: bold;
 `
+
+export const StyledStatus = styled.p`
+  font-weight: ${props => props.bold ? "bold" : "regular"};
+`;

@@ -81,6 +81,7 @@ export default class CV extends Component {
               attending,
               graduate,
               degree,
+              gpa,
               startDate,
               designation,
               endDate,
@@ -97,7 +98,7 @@ export default class CV extends Component {
                   </JobDate>
                 ) : attending === true ? (
                   <JobDate>
-                    <span>{major}</span>
+                      <span>Majoring in {major}, Current GPA {gpa}</span>
                     <span>{startDate} - Present</span>
                   </JobDate>
                 ) : (
@@ -117,7 +118,7 @@ export default class CV extends Component {
             {skills.map((skill) => {
               return (
                 <React.Fragment>
-                  <li>{skill}</li>
+                  <li>{skill.toUpperCase()}</li>
                 </React.Fragment>
               );
             })}

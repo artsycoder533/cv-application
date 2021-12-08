@@ -40,14 +40,14 @@ export default class EducationInfoForm extends Component {
       entry.graduate = input.value;
     }
     //if attending, unselect radio
-    input.type === "checkbox"
-      ? (entry["graduate"] = "No") 
-      : (entry["graduate"] = input.value);
+    // input.type === "checkbox"
+    //   ? (entry["graduate"] = "No") 
+    //   : (entry["graduate"] = input.value);
     
     //if graduated, unselect attending
-    input.type === "radio" && entry["graduate"] === "Yes" 
-      ? (entry["attending"] = "")
-      : (entry["attending"] = input.value);
+    // input.type === "radio" && entry["graduate"] === "Yes" 
+    //   ? (entry["attending"] = "")
+    //   : (entry["attending"] = input.value);
     this.setState(copyOfState);
   };
 
@@ -92,8 +92,10 @@ export default class EducationInfoForm extends Component {
               endDate,
               attending,
               graduate,
+              minor,
               designation,
               degree,
+              gpa,
               id,
             } = entry;
 
@@ -119,14 +121,29 @@ export default class EducationInfoForm extends Component {
                   index={index}
                   id={id}
                 />
-                <DisplayCheckbox
-                  label="Check if still attending"
-                  name="attending"
-                  value={attending}
+                <DisplayInput
+                  label="Minor"
+                  name="minor"
+                  value={minor}
+                  type="text"
                   handleInput={this.handleInput}
+                  placeholder={minor}
                   index={index}
                   id={id}
                 />
+                {graduate === "Yes" ? (
+                  ""
+                ) : (
+                  <DisplayCheckbox
+                    label="Check if still attending"
+                    name="attending"
+                    value={attending}
+                    handleInput={this.handleInput}
+                    index={index}
+                    id={id}
+                  />
+                )}
+
                 <DisplayInput
                   label="Date Started"
                   name="startDate"
@@ -137,7 +154,17 @@ export default class EducationInfoForm extends Component {
                   id={id}
                 />
                 {attending === true ? (
-                  ""
+                  <React.Fragment>
+                  <DisplayInput
+                    label="GPA"
+                    name="gpa"
+                    value={gpa}
+                    type="text"
+                    handleInput={this.handleInput}
+                    index={index}
+                    id={id}
+                  />
+                  </React.Fragment>
                 ) : (
                   <React.Fragment>
                     {" "}
@@ -160,7 +187,7 @@ export default class EducationInfoForm extends Component {
                         id={id}
                       />
                     </div>
-                    {graduate === "Yes" ? (
+                    {graduate === "Yes" || attending === true ? (
                       <div>
                         <DisplaySelect
                           label={"Degree"}
