@@ -54,7 +54,7 @@ export default class SkillsInfoForm extends Component {
         <FormWrapper>
           <SkillsForm>
             {skills.length < 1 ? (
-              <h4>No skills added, press "Add Entry to add a skill"</h4>
+              <h4>No skills added, press "+" to add a skill"</h4>
             ) : (
               skills.map((skill, index) => {
                 return (
@@ -63,6 +63,7 @@ export default class SkillsInfoForm extends Component {
                       label="Skill"
                       name="skill"
                       value={skill}
+                      placeholder="enter skill"
                       handleInput={this.handleInput}
                       index={index}
                     />

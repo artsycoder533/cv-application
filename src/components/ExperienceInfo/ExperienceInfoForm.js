@@ -51,7 +51,7 @@ export default class ExperienceInfoForm extends Component {
       duties: "",
       id: uniqid(),
     });
-    this.setState(copyOfState);
+    this.setState(copyOfState); 
   };
 
   render() {
@@ -80,7 +80,7 @@ export default class ExperienceInfoForm extends Component {
                     value={title}
                     type="text"
                     handleInput={this.handleInput}
-                    placeholder={title}
+                    placeholder="enter job title"
                     index={index}
                     id={id}
                   />
@@ -90,7 +90,7 @@ export default class ExperienceInfoForm extends Component {
                     value={company}
                     type="text"
                     handleInput={this.handleInput}
-                    placeholder={company}
+                    placeholder="enter company name"
                     index={index}
                     id={id}
                   />
@@ -129,6 +129,7 @@ export default class ExperienceInfoForm extends Component {
                   <DisplayTextarea
                     type={"textarea"}
                     label={"Duties"}
+                    placeholder="Enter job duties.  Try to keep it short."
                     value={duties}
                     name="duties"
                     cols={30}
