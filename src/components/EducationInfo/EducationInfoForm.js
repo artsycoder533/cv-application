@@ -135,7 +135,7 @@ export default class EducationInfoForm extends Component {
                     value={minor}
                     type="text"
                     handleInput={this.handleInput}
-                    placeholder="enter minor"
+                    placeholder="enter minor (optional)"
                     index={index}
                     id={id}
                   />
@@ -182,7 +182,7 @@ export default class EducationInfoForm extends Component {
                       value={gpa}
                       type="text"
                       handleInput={this.handleInput}
-                      placeholder="ex: 4.0"
+                      placeholder="ex: 4.0 (optional)"
                       index={index}
                       id={id}
                     />
