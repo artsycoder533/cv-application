@@ -17,9 +17,14 @@ export const FormWrapper = styled.div`
 
 export const EntryWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   border-radius: 10px;
-  padding: 3rem;
+  padding: 1rem;
   background: white;
+
+  @media screen and (min-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem;
+  }
 `;

@@ -10,4 +10,5 @@ export const Container = styled.div`
   align-items: center;
   padding: 1rem 0;
   font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
 `;

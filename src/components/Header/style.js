@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { FiDownload } from "react-icons/fi";
 
 export const Container = styled.header`
   height: 75px;
-  background-image: linear-gradient(to right, blue, purple);
+  background: blue;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -19,7 +20,12 @@ export const Container = styled.header`
 `;
 
 export const Title = styled.h1`
-    font-size: 2rem;
-    letter-spacing: 2px;
-    font-family: 'Roboto';
+  font-size: 3rem;
+  letter-spacing: 3px;
+  font-family: "Staatliches", cursive;
+`;
+
+export const StyledDownloadIcon = styled(FiDownload)`
+  font-size: 2rem;
+  font-weight: bold;
 `;

@@ -40,17 +40,6 @@ class App extends Component {
           designation: "",
           id: uniqid(),
         },
-        // {
-        //   school: "",
-        //   major: "",
-        //   startDate: "",
-        //   endDate: "",
-        //   attending: "",
-        //   graduate: "",
-        //   degree: "",
-        //   designation: "",
-        //   id: uniqid(),
-        // },
       ],
       experience: [
         {
@@ -119,9 +108,6 @@ class App extends Component {
           ) : view === 3 ? (
             <div>
               <SkillsInfoForm skills={this.state.skills} />
-              {/* <button type="button" onClick={() => this.generateCV()}>
-                Generate CV
-              </button> */}
             </div>
           ) : (
             <div className="cv">

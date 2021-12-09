@@ -8,6 +8,7 @@ import { StyledFormWithScroll } from '../Form/style';
 import { AbsoluteIconButton, StyledTrashIcon, AbsoluteTrashButton } from '../Button/style';
 import { Container, EntryWrapper, FormWrapper } from './style';
 import { StyledTitle } from '../Title/style';
+import { StyledAddIcon } from '../EducationInfo/style';
 
 export default class ExperienceInfoForm extends Component {
   constructor(props) {
@@ -150,7 +151,7 @@ export default class ExperienceInfoForm extends Component {
           </StyledFormWithScroll>
         </FormWrapper>
         <AbsoluteIconButton type="button" onClick={() => this.addNewEntry()}>
-          Add Entry <FiPlus />
+           <StyledAddIcon />
         </AbsoluteIconButton>
       </Container>
     );

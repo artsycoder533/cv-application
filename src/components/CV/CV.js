@@ -7,7 +7,7 @@ import {
   FiMail,
   FiPhone,
 } from "react-icons/fi";
-import { Container, StyledTitle, StyledSectionTitle, JobDate, HeaderSection, List, JobTitle, Description } from "./style";
+import { Container, StyledTitle, StyledSectionTitle, JobDate, HeaderSection, List, JobTitle, Description, StyledHeader } from "./style";
 
 import { DownloadButton } from "../Button/style";
 
@@ -20,24 +20,20 @@ export default class CV extends Component {
       <Container className="cv">
         <StyledTitle>{name}</StyledTitle>
         <br />
-        <HeaderSection >
+        <HeaderSection>
           <span>
             <FiPhone /> {phone}
           </span>{" "}
-          |{" "}
           <span>
             <FiMail /> {email}
           </span>{" "}
-          |{" "}
           <span>
             <FiExternalLink /> {portfolio}
           </span>{" "}
-          |{" "}
           <span>
             {" "}
             <FiLinkedin /> {linkedIn}
           </span>{" "}
-          |{" "}
           <span>
             <FiGithub /> {github}
           </span>
@@ -78,6 +74,7 @@ export default class CV extends Component {
             const {
               school,
               major,
+              minor,
               attending,
               graduate,
               degree,
@@ -92,20 +89,34 @@ export default class CV extends Component {
                 {graduate === "Yes" ? (
                   <JobDate>
                     <span>
-                      {degree} of {designation}, {major}
+                      {degree} of {designation} in {major}{" "}
+                      {minor ? <span>, Minor in {minor}</span> : ""}
                     </span>{" "}
                     <span>Graduated {endDate}</span>{" "}
                   </JobDate>
                 ) : attending === true ? (
-                  <JobDate>
-                      <span>Majoring in {major}, Current GPA {gpa}</span>
-                    <span>{startDate} - Present</span>
-                  </JobDate>
+                  <React.Fragment>
+                    <JobDate>
+                      <span>
+                        {degree} of {designation} in {major}
+                        {minor ? <span>, Minor in {minor}</span> : ""}
+                      </span>
+                      <span>{startDate} - Present</span>
+                    </JobDate>
+                    {gpa ? <p>Current GPA: {gpa}</p> : attending === true("")}
+                  </React.Fragment>
                 ) : (
-                  <h4>
-                    {startDate} - {endDate}
-                  </h4>
+                  <JobDate>
+                    <span>
+                      Completed coursework in {major}
+                      {minor ? <span>, and {minor}</span> : ""}
+                    </span>
+                    <span>
+                      {startDate} - {endDate}
+                    </span>
+                  </JobDate>
                 )}
+                <br />
               </React.Fragment>
             );
           })}
@@ -118,7 +129,7 @@ export default class CV extends Component {
             {skills.map((skill) => {
               return (
                 <React.Fragment>
-                  <li>{skill.toUpperCase()}</li>
+                  <li> {skill.toUpperCase()} </li>
                 </React.Fragment>
               );
             })}

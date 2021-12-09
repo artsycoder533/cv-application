@@ -13,42 +13,17 @@ export const Container = styled.div`
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  /* padding: 3rem; */
-  border: 2px solid blue;
 `;
 
 export const EntryWrapper = styled.div`
-  /* display: grid;
-  grid-template-columns: auto auto;
-  align-items: center;
-  padding: 3rem;
-  gap: 2rem; */
-
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
   display: flex;
-  
   align-items: center;
-  /* gap: 2rem; */
   border-radius: 10px;
-  padding:  3rem;
+  padding:  1rem;
   background: white;
 `;
 
 export const SkillsForm = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1400px;
-  width: 90vw;
-  border-radius: 8px;
-  padding: 3rem 0;
-  background: white;
-  align-items: center;
-  gap: 2rem; */
-
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +32,7 @@ export const SkillsForm = styled.div`
   max-width: 1400px;
   width: 90vw;
   border-radius: 8px;
-  padding: 3rem;
+  padding: 1rem;
   overflow-y: scroll;
   height: calc(100vh - 120px - 175px - 121px);
   /* background: white; */

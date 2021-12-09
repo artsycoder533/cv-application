@@ -5,10 +5,15 @@ import DisplayInput from "../DisplayInput/DisplayInput";
 import DisplayRadio from "../DisplayRadio/DisplayRadio";
 import DisplayCheckbox from "../DisplayCheckbox/DisplayCheckbox";
 import DisplaySelect from "../DisplaySelect/DisplaySelect";
-import { AbsoluteIconButton, AbsoluteTrashButton, IconButton, StyledTrashIcon } from "../Button/style";
+import {
+  AbsoluteIconButton,
+  AbsoluteTrashButton,
+  IconButton,
+  StyledTrashIcon,
+} from "../Button/style";
 import uniqid from "uniqid";
-import { ButtonWrapper, Container, EntryWrapper } from "./style";
-import { EducationForm, StyledForm, StyledFormWithScroll} from "../Form/style";
+import { ButtonWrapper, Container, EntryWrapper, StyledAddIcon } from "./style";
+import { EducationForm, StyledForm, StyledFormWithScroll } from "../Form/style";
 import { StyledTitle } from "../Title/style";
 import { FormWrapper } from "./style";
 
@@ -41,11 +46,11 @@ export default class EducationInfoForm extends Component {
     }
     //if attending, unselect radio
     // input.type === "checkbox"
-    //   ? (entry["graduate"] = "No") 
+    //   ? (entry["graduate"] = "No")
     //   : (entry["graduate"] = input.value);
-    
+
     //if graduated, unselect attending
-    // input.type === "radio" && entry["graduate"] === "Yes" 
+    // input.type === "radio" && entry["graduate"] === "Yes"
     //   ? (entry["attending"] = "")
     //   : (entry["attending"] = input.value);
     this.setState(copyOfState);
@@ -83,91 +88,82 @@ export default class EducationInfoForm extends Component {
       <Container>
         <StyledTitle>Education</StyledTitle>
         <FormWrapper>
-        <StyledFormWithScroll action="" onSubmit={this.handleSubmit} className="education_form">
-          {education.map((entry, index) => {
-            const {
-              school,
-              major,
-              startDate,
-              endDate,
-              attending,
-              graduate,
-              minor,
-              designation,
-              degree,
-              gpa,
-              id,
-            } = entry;
+          <StyledFormWithScroll
+            action=""
+            onSubmit={this.handleSubmit}
+            className="education_form">
+            {education.map((entry, index) => {
+              const {
+                school,
+                major,
+                startDate,
+                endDate,
+                attending,
+                graduate,
+                minor,
+                designation,
+                degree,
+                gpa,
+                id,
+              } = entry;
 
-            return (
-              <EntryWrapper key={id}>
-                <DisplayInput
-                  label="School"
-                  name="school"
-                  value={school}
-                  type="text"
-                  handleInput={this.handleInput}
-                  placeholder={school}
-                  index={index}
-                  id={id}
-                />
-                <DisplayInput
-                  label="Major"
-                  name="major"
-                  value={major}
-                  type="text"
-                  handleInput={this.handleInput}
-                  placeholder={major}
-                  index={index}
-                  id={id}
-                />
-                <DisplayInput
-                  label="Minor"
-                  name="minor"
-                  value={minor}
-                  type="text"
-                  handleInput={this.handleInput}
-                  placeholder={minor}
-                  index={index}
-                  id={id}
-                />
-                {graduate === "Yes" ? (
-                  ""
-                ) : (
-                  <DisplayCheckbox
-                    label="Check if still attending"
-                    name="attending"
-                    value={attending}
-                    handleInput={this.handleInput}
-                    index={index}
-                    id={id}
-                  />
-                )}
-
-                <DisplayInput
-                  label="Date Started"
-                  name="startDate"
-                  value={startDate}
-                  type="date"
-                  handleInput={this.handleInput}
-                  index={index}
-                  id={id}
-                />
-                {attending === true ? (
-                  <React.Fragment>
+              return (
+                <EntryWrapper key={id}>
                   <DisplayInput
-                    label="GPA"
-                    name="gpa"
-                    value={gpa}
+                    label="School"
+                    name="school"
+                    value={school}
                     type="text"
                     handleInput={this.handleInput}
+                    placeholder="enter school name"
                     index={index}
                     id={id}
                   />
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    {" "}
+                  <DisplayInput
+                    label="Major"
+                    name="major"
+                    value={major}
+                    type="text"
+                    handleInput={this.handleInput}
+                    placeholder="enter major"
+                    index={index}
+                    id={id}
+                  />
+                  <DisplayInput
+                    label="Minor"
+                    name="minor"
+                    value={minor}
+                    type="text"
+                    handleInput={this.handleInput}
+                    placeholder="enter minor"
+                    index={index}
+                    id={id}
+                  />
+                  {graduate === "Yes" ? (
+                    ""
+                  ) : (
+                    <DisplayCheckbox
+                      label="Check if still attending"
+                      name="attending"
+                      value={attending}
+                      handleInput={this.handleInput}
+                      index={index}
+                      id={id}
+                    />
+                  )}
+
+                  <DisplayInput
+                    label="Date Started"
+                    name="startDate"
+                    value={startDate}
+                    type="date"
+                    handleInput={this.handleInput}
+                    index={index}
+                    id={id}
+                  />
+                  {attending === true ? (
+                    ""
+                  ) : (
                     <DisplayInput
                       label="Date Ended"
                       name="endDate"
@@ -177,17 +173,37 @@ export default class EducationInfoForm extends Component {
                       index={index}
                       id={id}
                     />
-                    <div className="radios">
-                      <DisplayRadio
-                        label="Yes"
-                        name={`graduate${index}`}
-                        graduate={graduate}
-                        handleInput={this.handleInput}
-                        index={index}
-                        id={id}
-                      />
-                    </div>
-                    {graduate === "Yes" || attending === true ? (
+                  )}
+
+                  {attending === true ? (
+                    <DisplayInput
+                      label="GPA"
+                      name="gpa"
+                      value={gpa}
+                      type="text"
+                      handleInput={this.handleInput}
+                      placeholder="ex: 4.0"
+                      index={index}
+                      id={id}
+                    />
+                  ) : (
+                   
+                      <div className="radios">
+                        <DisplayRadio
+                          label="Yes"
+                          name={`graduate${index}`}
+                          graduate={graduate}
+                          handleInput={this.handleInput}
+                          index={index}
+                          id={id}
+                        />
+                      </div>
+                   
+                  )}
+                  {graduate === "No" ? (
+                    ""
+                  ) : (
+                    <React.Fragment>
                       <div>
                         <DisplaySelect
                           label={"Degree"}
@@ -198,6 +214,8 @@ export default class EducationInfoForm extends Component {
                           index={index}
                           id={id}
                         />
+                      </div>
+                      <div>
                         <DisplaySelect
                           label={"Designation"}
                           value={designation}
@@ -208,27 +226,25 @@ export default class EducationInfoForm extends Component {
                           id={id}
                         />
                       </div>
-                    ) : (
-                      ""
-                    )}
-                  </React.Fragment>
-                )}
-                {index === 0 ? (
-                  ""
-                ) : (
-                  <AbsoluteTrashButton
-                    type="button"
-                    onClick={() => this.delete(index)}>
-                    <StyledTrashIcon />
-                  </AbsoluteTrashButton>
-                )}
-              </EntryWrapper>
-            );
-          })}
-        </StyledFormWithScroll>
-       </FormWrapper>
+                    </React.Fragment>
+                  )}
+
+                  {index === 0 ? (
+                    ""
+                  ) : (
+                    <AbsoluteTrashButton
+                      type="button"
+                      onClick={() => this.delete(index)}>
+                      <StyledTrashIcon />
+                    </AbsoluteTrashButton>
+                  )}
+                </EntryWrapper>
+              );
+            })}
+          </StyledFormWithScroll>
+        </FormWrapper>
         <AbsoluteIconButton type="button" onClick={() => this.addNewEntry()}>
-          Add Entry <FiPlus />
+          <StyledAddIcon />
         </AbsoluteIconButton>
       </Container>
     );

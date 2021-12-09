@@ -24,6 +24,11 @@ export const StyledFormWithScroll = styled.form`
   top: 295px;
   max-width: 1400px;
   width: 90vw;
+  padding: 1rem 0;
+
+  @media screen and (min-width: 992px) {
+    padding: 3rem;
+  }
 `;
 
 

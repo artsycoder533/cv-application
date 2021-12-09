@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FiArrowRight, FiArrowLeft, FiSend } from "react-icons/fi";
 
 export const StyledFooter = styled.footer`
   display: flex;
@@ -18,3 +19,17 @@ export const StyledFooter = styled.footer`
   }
 `;
 
+export const StyledRightIcon = styled(FiArrowRight)`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
+export const StyledLeftIcon = styled(FiArrowLeft)`
+  font-size: 2rem;
+  font-weight: bold;
+`;
+
+export const StyledSendIcon = styled(FiSend)`
+  font-size: 2rem;
+  font-weight: bold;
+`;

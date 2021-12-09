@@ -12,6 +12,7 @@ import {
 } from "./style";
 import { AbsoluteIconButton, AbsoluteSkillsTrashButton, AbsoluteTrashButton, IconButton, PlainButton, StyledTrashIcon } from "../Button/style";
 import { EntryWrapper } from "./style";
+import { StyledAddIcon } from "../EducationInfo/style";
 
 export default class SkillsInfoForm extends Component {
   constructor(props) {
@@ -77,7 +78,7 @@ export default class SkillsInfoForm extends Component {
           </SkillsForm>
         </FormWrapper>
         <AbsoluteIconButton type="button" onClick={() => this.addNewEntry()}>
-          Add Entry <FiPlus />
+           <StyledAddIcon />
         </AbsoluteIconButton>
       </Container>
     );

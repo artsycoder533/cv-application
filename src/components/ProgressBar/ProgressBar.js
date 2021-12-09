@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { Container, Step, StyledFiCheck, StyledStatus } from './styles';
 import { Circle } from './styles';
-import { FiCheck } from "react-icons/fi";
+
 
 export default class ProgressBar extends Component {
     state = {
-        steps: [1, 2, 3, 4],
         pages: ["General", "Education", "Experience", "Skills"],
         view: this.props.view
     }
     render() {
-        const { steps, pages } = this.state;
+        const { pages } = this.state;
         const { view } = this.props;
         return (
             <Container>

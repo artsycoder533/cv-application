@@ -8,4 +8,5 @@ export const StyledTitle = styled.h2`
   border-bottom: 1px solid lightgray;
   z-index: 1;
   background: white;
+  font-family: "Poppins", sans-serif;
 `;

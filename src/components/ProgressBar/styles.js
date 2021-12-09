@@ -33,18 +33,21 @@ export const Circle = styled.div`
   color: ${props => props.current ? "white" : "gray"};
   z-index: 2;
   
- 
+  transition: all 0.3s ease-in-out;
 `;
 
 export const Step = styled.div`
-    display: grid;
-    place-items: center;
-`
+  display: grid;
+  place-items: center;
+  font-family: "Poppins", sans-serif;
+`;
 
 export const StyledFiCheck = styled(FiCheck)`
     font-weight: bold;
 `
 
 export const StyledStatus = styled.p`
-  font-weight: ${props => props.bold ? "bold" : "regular"};
+  color: purple;
+  font-family: "Poppins", sans-serif;
+  font-weight: ${(props) => (props.bold ? "bold" : "regular")};
 `;

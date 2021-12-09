@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { StyledFooter } from './style';
+import { StyledFooter, StyledLeftIcon, StyledRightIcon, StyledSendIcon } from './style';
 import { StyledButton } from '../Button/style';
-import { FiArrowRight, FiArrowLeft, FiSend } from "react-icons/fi";
 
 export default class Footer extends Component {
     render() {
@@ -12,16 +11,16 @@ export default class Footer extends Component {
               ""
             ) : (
               <StyledButton onClick={prevView}>
-                <FiArrowLeft /> Go Back
+                <StyledLeftIcon />
               </StyledButton>
             )}
             {view > 2 && view < 4 ? (
               <StyledButton onClick={nextView}>
-                Generate <FiSend />
+                Generate <StyledSendIcon />
               </StyledButton>
             ) : view > 3 ? "" : (
               <StyledButton onClick={nextView}>
-                Next <FiArrowRight />
+                 <StyledRightIcon />
               </StyledButton>
             )}
           </StyledFooter>
